@@ -1,0 +1,6 @@
+- name: Конфигурирование сервера
+  hosts: sandbox
+  become: true
+  roles:
+    - add-user
+    - deploy-bin
