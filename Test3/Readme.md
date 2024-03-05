@@ -1,6 +1,7 @@
+Структура проекта    
+```
 ├── configure-webserver.yml  # Плейбук для настройки веб-сервера  
 └── roles  
-
     ├── configure-firewall   # Роль для настройки фаерволла  
     │   ├── tasks  
     │   │   └── main.yml  
@@ -23,6 +24,8 @@
         ├── tasks  
         │   └── main.yml  
         └── vars  
-            └── main.yml  
-
-**ansible-playbook -i <путь_к_инвентарному_файлу> configure-webserver.yml**
+            └── main.yml
+```
+Для запуска плейбука
+```bash
+ansible-playbook -i <путь_к_инвентарному_файлу> configure-webserver.yml
