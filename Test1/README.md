@@ -1,6 +1,7 @@
-.
 ├── configure-server.yml
+
 └── roles
+
     ├── add-user
     │   ├── files
     │   │   └── testuser.pub       # Сюда поместите сгенерированный публичный SSH ключ
