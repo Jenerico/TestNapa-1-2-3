@@ -1,7 +1,7 @@
+Структура проекта
+```
 ├── configure-server.yml
-
 └── roles
-
     ├── add-user
     │   ├── files
     │   │   └── testuser.pub       # Сюда поместите сгенерированный публичный SSH ключ
@@ -17,5 +17,7 @@
         │   └── web.conf          # Файл конфигурации веб-сервера
         └── tasks
             └── main.yml          # Задачи для развертывания файлов и настройки системы
-
-**ansible-playbook -i <путь_к_инвентарному_файлу> configure-server.yml**
+```
+Для запуска плейбука
+```bash
+ansible-playbook -i <путь_к_инвентарному_файлу> configure-server.yml
