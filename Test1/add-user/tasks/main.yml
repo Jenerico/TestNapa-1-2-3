@@ -1,0 +1,21 @@
+- name: Создание пользователя testuser
+  ansible.builtin.user:
+    name: testuser
+    comment: "Test User"
+    uid: "<Указать_произвольный_UID>"
+    group: "<Указать_произвольную_группу>"
+    create_home: yes
+
+- name: Копирование публичного ключа для testuser
+  ansible.builtin.copy:
+    src: testuser.pub
+    dest: "/home/testuser/.ssh/authorized_keys"
+    owner: testuser
+    group: testuser
+    mode: '0644'
+
+- name: Выдача sudo-прав без пароля
+  ansible.builtin.template:
+    src: sudoers.d_testuser.j2
+    dest: "/etc/sudoers.d/testuser"
+    validate: 'visudo -cf %s'
