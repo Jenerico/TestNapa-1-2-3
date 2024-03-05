@@ -1,0 +1,31 @@
+- name: Установка пакета iptables
+  ansible.builtin.package:
+    name: iptables
+    state: present
+
+- name: Разрешение уже установленных входящих соединений
+  ansible.builtin.iptables:
+    chain: INPUT
+    ctstate: ESTABLISHED,RELATED
+    jump: ACCEPT
+    policy: ACCEPT
+
+- name: Разрешение входящих SSH подключений от 10.10.10.10
+  ansible.builtin.iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 22
+    source: 10.10.10.10
+    jump: ACCEPT
+
+- name: Разрешение входящих подключений к HTTP и HTTPS
+  ansible.builtin.iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: [80, 443]
+    jump: ACCEPT
+
+- name: Отклонение всех остальных входящих подключений
+  ansible.builtin.iptables:
+    chain: INPUT
+    jump: DROP
