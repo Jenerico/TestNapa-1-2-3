@@ -1,0 +1,29 @@
+- name: Создание директорий для бинарных файлов и конфигураций
+  ansible.builtin.file:
+    path: "/home/testuser/app/{{ item }}"
+    state: directory
+    owner: testuser
+    group: testuser
+    mode: '0750'
+  loop:
+    - bin
+    - conf
+
+- name: Копирование файлов конфигурации
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/home/testuser/app/conf/{{ item }}"
+    owner: testuser
+    group: testuser
+    mode: '0750'
+  loop:
+    - web.conf
+    - app.conf
+
+- name: Размещение файла в зависимости от количества CPU
+  ansible.builtin.copy:
+    src: "{{ 'singlesocket.bin' if ansible_processor_vcpus == 1 else 'multisocket.bin' }}"
+    dest: "/home/testuser/app/bin/"
+    owner: testuser
+    group: testuser
+    mode: '0750'
