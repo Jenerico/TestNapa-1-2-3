@@ -24,3 +24,5 @@
         │   └── main.yml  
         └── vars  
             └── main.yml  
+
+**ansible-playbook -i <путь_к_инвентарному_файлу> configure-webserver.yml**
