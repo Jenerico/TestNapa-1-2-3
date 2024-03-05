@@ -1,0 +1,11 @@
+[Unit]
+Description=Nginx Web Server
+After=network.target
+
+[Service]
+User={{ nginx_user }}
+ExecStart=/usr/local/bin/nginx
+Environment=NGINX_CONF_DIR={{ nginx_conf_dir }}
+
+[Install]
+WantedBy=multi-user.target
