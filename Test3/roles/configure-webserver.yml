@@ -1,0 +1,7 @@
+- name: Настройка веб-сервера
+  hosts: ngx-webserver
+  become: yes
+  roles:
+    - install-nginx
+    - prepare-disk
+    - configure-firewall
