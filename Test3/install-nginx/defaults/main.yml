@@ -1,3 +1,0 @@
-nginx_user: nginx
-nginx_binary_url: https://example.com/registry/nginx_1.0.0
-nginx_conf_dir: /etc/nginx
